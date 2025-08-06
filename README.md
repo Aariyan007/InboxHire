@@ -1,81 +1,82 @@
-🎯 JobPulse
-Automated AI-Powered Job Aggregator with Email Delivery
-JobPulse is an intelligent job scheduling system that automatically scrapes internship listings, uses AI to refine and summarize them, converts the data into a clean PDF format, and delivers it via email to subscribed users—every few hours.
+🎯 InboxHire
+Automated AI-Powered Internship Aggregator with Email Delivery
+InboxHire is a smart job-scraping and delivery system that automatically collects internship listings from job portals, summarizes them using AI, formats the results into a clean PDF, and emails them to subscribed users every few hours. It’s designed for students and early professionals who want curated opportunities delivered straight to their inbox—without the noise.
 
 📌 Features
-🔍 Real-time Job Scraping
-Scrapes job listings from Internshala using Puppeteer.
-🤖 AI-Based Job Summarization
-Uses Gemini API to summarize and highlight job details intelligently.
-📄 PDF Generation
-Creates a structured and branded PDF document for easy viewing.
+🔍 Real-Time Internship Scraping
+Collects fresh internship listings from Internshala using Puppeteer.
+
+🤖 AI-Powered Summarization
+Uses Gemini API to distill job descriptions into digestible summaries, highlighting the key info.
+
+📄 Clean PDF Output
+Automatically generates a structured and visually clean PDF containing job data.
+
 📧 Automated Email Delivery
-Sends the curated jobs list directly to users' inboxes.
-⏰ Scheduled Cron Jobs
-Automatically fetches and updates listings every 6 hours.
+Sends the PDF to user inboxes on a schedule using Nodemailer.
+
+⏰ Background Scheduler
+Uses cron jobs to trigger scraping and emailing every 6 hours.
+
 🚀 Tech Stack
-Backend: Node.js, Express.js
-Web Scraping: Puppeteer
+Backend: Node.js, Express
+Scraping: Puppeteer
 AI Integration: Gemini API
-Email Service: Nodemailer
 PDF Generation: pdfkit
+Emailing: Nodemailer
 Database: MongoDB
 Scheduler: node-cron
 
+🛠️ Setup
 
-🛠️ Setup Instructions
-
-# Clone the repository
-git clone https://github.com/yourusername/jobpulse.git
-cd jobpulse
-
-# Install dependencies
+Clone the repository
+git clone https://github.com/yourusername/inboxhire.git
+cd inboxhire
+Install dependencies
 npm install
-
-# Create a .env file and add:
-# PORT=5000
-# MONGO_URI=your_mongo_connection_string
-# GEMINI_API_KEY=your_gemini_api_key
-# EMAIL_USER=your_email
-# EMAIL_PASS=your_email_password
-
-# Run the server
+Create a .env file with the following environment variables:
+PORT=5000
+MONGO_URI=your_mongo_connection_string
+GEMINI_API_KEY=your_gemini_api_key
+EMAIL_USER=your_email@example.com
+EMAIL_PASS=your_email_password
+Start the server
 node index.js
-
-
-
-📂 Project Structure
+📂 Folder Structure
 .
 ├── DB/
-│   └── db.js
+│ └── db.js
 ├── crons/
-│   └── cronjob.js
+│ └── cronjob.js
 ├── routes/
-│   └── user.routes.js
+│ └── user.routes.js
 ├── scrapper.js
 ├── utils/
-│   ├── generatePdf.js
-│   └── sendEmail.js
+│ ├── generatePdf.js
+│ └── sendEmail.js
 ├── index.js
 ├── .env
 └── package.json
-
-
-📬 Output Example
-Each user receives a PDF with:
-Job Title
+📬 What Users Receive
+A clean, concise PDF with:
+Internship Title
 Company Name
 Direct Application Link
-Summary (AI-generated)
-🔒 Security & Privacy
-API keys and credentials are managed via .env
-Emails are sent only to subscribed users
-No data is stored unnecessarily
-📈 Future Improvements
-Dashboard for tracking applied jobs
-User authentication and preferences
-Support for more job portals (LinkedIn, Indeed)
+AI-Generated Summary
+
+🔐 Privacy and Security
+Environment variables handle sensitive data
+User emails are securely stored
+No spam or data misuse—ever
+
+📈 Roadmap
+Web dashboard with login/authentication
+More job platforms (LinkedIn, Naukri, etc.)
+User-specific filters and notification preferences
+Analytics for opens, clicks, and applications
+
 🧑‍💻 Author
-S.Aariyan
-Computer Science Engineer & MERN Developer
-📧 [aariyansunu28@gmail.com]
+S. Aariyan
+Computer Science Engineer & MERN Stack Developer
+aariyansunu28@gmail.com
+
