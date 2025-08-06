@@ -42,21 +42,7 @@ EMAIL_USER=your_email@example.com
 EMAIL_PASS=your_email_password
 Start the server
 node index.js
-📂 Folder Structure
-.
-├── DB/
-│ └── db.js
-├── crons/
-│ └── cronjob.js
-├── routes/
-│ └── user.routes.js
-├── scrapper.js
-├── utils/
-│ ├── generatePdf.js
-│ └── sendEmail.js
-├── index.js
-├── .env
-└── package.json
+
 📬 What Users Receive
 A clean, concise PDF with:
 Internship Title
