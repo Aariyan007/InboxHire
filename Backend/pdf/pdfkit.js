@@ -15,7 +15,7 @@ const generatePDF = (content, filePath) => {
 
             doc.fontSize(20)
                .fillColor('#2563eb')
-               .text('🚀 Your Daily MERN Stack Jobs', { align: 'center' });
+               .text('Your Daily MERN Stack Jobs', { align: 'center' });
             
             doc.fontSize(12)
                .fillColor('#6b7280')
