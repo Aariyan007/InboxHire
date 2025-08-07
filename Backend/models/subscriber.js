@@ -32,7 +32,7 @@ const userSchema = new mongoose.Schema({
     }
 });
 
-// Update the updatedAt field before saving
+
 userSchema.pre('save', function(next) {
     if (this.isModified() && !this.isNew) {
         this.updatedAt = new Date();
