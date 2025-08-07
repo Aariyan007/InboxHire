@@ -5,17 +5,14 @@ const fs = require('fs').promises;
 
 const sendEmailWithPDF = async (toEmail, content) => {
   try {
-    // Create unique filename to avoid conflicts
     const timestamp = Date.now();
     const filePath = path.join(__dirname, `jobs-${timestamp}.pdf`);
     
-    console.log(`📄 Generating PDF for ${toEmail}...`);
-    // Generate PDF
+    console.log(`Generating PDF for ${toEmail}...`);
     await generatePDF(content, filePath);
     
-    console.log(`📧 Sending email to ${toEmail}...`);
+    console.log(`Sending email to ${toEmail}...`);
     
-    // Create transporter - FIXED: Changed createTransporter to createTransport
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -24,7 +21,7 @@ const sendEmailWithPDF = async (toEmail, content) => {
       }
     });
     
-    // Get current date for subject
+
     const today = new Date().toLocaleDateString('en-US', {
       weekday: 'long',
       year: 'numeric',
@@ -38,7 +35,7 @@ const sendEmailWithPDF = async (toEmail, content) => {
       subject: `🚀 Your MERN Stack Jobs for ${today}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #2563eb;">Your Daily Job Alert is Here! 🎯</h2>
+          <h2 style="color: #2563eb;">Your Daily Job Alert is Here! </h2>
           <p>Hi there!</p>
           <p>We've found some exciting MERN stack opportunities for you today. Check out the attached PDF for detailed information about each position.</p>
           <p style="background: #f3f4f6; padding: 15px; border-radius: 8px;">
@@ -61,13 +58,12 @@ const sendEmailWithPDF = async (toEmail, content) => {
     
     await transporter.sendMail(mailOptions);
     
-    // Clean up the temporary PDF file
     await fs.unlink(filePath);
     
-    console.log(`✅ Email sent successfully to ${toEmail}`);
+    console.log(`Email sent successfully to ${toEmail}`);
     
   } catch (error) {
-    console.error(`❌ Error sending email to ${toEmail}:`, error);
+    console.error(`Error sending email to ${toEmail}:`, error);
     throw error;
   }
 };

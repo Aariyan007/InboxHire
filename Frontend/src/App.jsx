@@ -4,9 +4,12 @@ import { Mail, Clock, Briefcase, Zap, Check, ArrowRight, Star } from 'lucide-rea
 
 const App = () => {
   const [email, setEmail] = useState('');
-  const [time, setTime] = useState('09:00');
+  const [time, setTime] = useState('9:00');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  // Add these state variables to store submitted values
+  const [submittedEmail, setSubmittedEmail] = useState('');
+  const [submittedTime, setSubmittedTime] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,6 +31,9 @@ const App = () => {
       
       if (data.success) {
         console.log('Success:', data);
+        // Store submitted values before resetting
+        setSubmittedEmail(email);
+        setSubmittedTime(time);
         setIsSubmitted(true);
         setEmail('');
         setTime('09:00');
@@ -130,7 +136,7 @@ const App = () => {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
           >
-            JobSync
+            InboxHire
           </motion.h1>
           
           <motion.p 
@@ -284,10 +290,10 @@ const App = () => {
                   </motion.div>
                   <h3 className="text-2xl font-bold text-white mb-4">You're All Set! 🎉</h3>
                   <p className="text-gray-300 mb-2">
-                    We'll send fresh MERN stack jobs to <span className="text-blue-400 font-semibold">{email}</span>
+                    We'll send fresh MERN stack jobs to <span className="text-blue-400 font-semibold">{submittedEmail}</span>
                   </p>
                   <p className="text-gray-400">
-                    Daily at <span className="text-purple-400 font-semibold">{time}</span>
+                    Daily at <span className="text-purple-400 font-semibold">{submittedTime}</span>
                   </p>
                 </motion.div>
               )}
