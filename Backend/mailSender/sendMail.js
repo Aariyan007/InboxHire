@@ -5,7 +5,7 @@ const sendEmailWithPDF = require('./nodeMailer');
 
 const sendEmailsToUsers = async () => {
     try {
-        console.log('🚀 Starting email sending process...');
+        console.log(' Starting email sending process...');
         
 
         const oneDayAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
@@ -13,7 +13,7 @@ const sendEmailsToUsers = async () => {
             scrapedAt: { $gte: oneDayAgo }
         }).limit(20); 
         
-        console.log(`📊 Found ${todaysJobs.length} jobs from today`);
+        console.log(`Found ${todaysJobs.length} jobs from today`);
         
         if (todaysJobs.length === 0) {
             console.log('No jobs found for today, using recent jobs...');
@@ -27,7 +27,7 @@ const sendEmailsToUsers = async () => {
         }
         
 
-        console.log('🤖 Processing jobs with Gemini AI...');
+        console.log('Processing jobs with Gemini AI...');
         const processedContent = await processJobsWithGemini(todaysJobs);
         
 
@@ -36,15 +36,15 @@ const sendEmailsToUsers = async () => {
         
 
         const allUsers = await User.find();
-        console.log(`📧 Found ${allUsers.length} total users in database`);
+        console.log(`Found ${allUsers.length} total users in database`);
         
 
         const scheduledUsers = await User.find({ time: currentTime });
-        console.log(`⏰ Found ${scheduledUsers.length} users scheduled for ${currentTime}`);
+        console.log(`Found ${scheduledUsers.length} users scheduled for ${currentTime}`);
         
 
         const usersToEmail = scheduledUsers.length > 0 ? scheduledUsers : allUsers.slice(0, 1);
-        console.log(`📬 Sending emails to ${usersToEmail.length} users`);
+        console.log(`Sending emails to ${usersToEmail.length} users`);
         
 
         let successCount = 0;
