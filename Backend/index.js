@@ -25,14 +25,14 @@ app.get('/',(req,res)=>{
 
 app.post('/test-email', async (req, res) => {
     try {
-        console.log('🧪 Manual email test initiated...');
+        console.log('Manual email test initiated...');
         await sendEmailsToUsers();
         res.json({ 
             success: true, 
             message: 'Test emails sent successfully to scheduled users' 
         });
     } catch (error) {
-        console.error('❌ Test email failed:', error);
+        console.error('Test email failed:', error);
         res.status(500).json({ 
             success: false, 
             error: 'Failed to send test emails',
@@ -69,9 +69,9 @@ cron.schedule('0 */6 * * *', async () => {
     console.log('🕷️ Running scheduled scraping job...');
     try {
         const jobs = await ScrapeInternshalaWithPuppeteer();
-        console.log(`✅ Scraping completed. Found ${jobs.length} jobs`);
+        console.log(`Scraping completed. Found ${jobs.length} jobs`);
     } catch (error) {
-        console.error('❌ Scraping job failed:', error);
+        console.error('Scraping job failed:', error);
     }
 });
 
