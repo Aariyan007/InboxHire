@@ -66,7 +66,7 @@ app.get('/stats', async (req, res) => {
 });
 
 cron.schedule('0 */6 * * *', async () => {
-    console.log('🕷️ Running scheduled scraping job...');
+    console.log('Running scheduled scraping job...');
     try {
         const jobs = await ScrapeInternshalaWithPuppeteer();
         console.log(`Scraping completed. Found ${jobs.length} jobs`);
